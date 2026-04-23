@@ -1,0 +1,9 @@
+# HA Supervisor reads this when building the add-on locally on the
+# user's host. Both arches reference the same multi-arch manifest we
+# publish from .github/workflows/bridge-publish.yml.
+build_from:
+  amd64: ghcr.io/nayatrei/genesis-bridge:latest
+  aarch64: ghcr.io/nayatrei/genesis-bridge:latest
+labels:
+  org.opencontainers.image.source: https://github.com/Nayatrei/GenesisHome
+  org.opencontainers.image.description: Genesis Bridge — Home Assistant add-on

@@ -1,0 +1,9 @@
+# Local working copies of the published HA add-on repo sometimes end up
+# here (e.g. when re-cloning to test a change before pushing). They have
+# their own .git dir and would get swept into a mirror if committed.
+# Ignore both casings — the repo's canonical name is capitalized but
+# GitHub redirects the lowercase URL too.
+/GenesisPlanner-HA-Addon/
+/genesisplanner-ha-addon/
+
+.DS_Store

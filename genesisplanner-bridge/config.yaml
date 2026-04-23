@@ -1,0 +1,36 @@
+name: GenesisPlanner Bridge
+version: "0.1.2"
+slug: genesisplanner-bridge
+description: Connect this Home Assistant to GenesisPlanner. Free — no Nabu Casa, domain, or port forwarding required.
+url: https://github.com/Nayatrei/GenesisPlanner-HA-Addon
+arch:
+  - amd64
+  - aarch64
+init: false
+
+# `homeassistant_api: true` exports SUPERVISOR_TOKEN inside the container,
+# letting the bridge talk to http://supervisor/core without the user
+# having to mint a long-lived access token. The user is asked for nothing
+# except the 6-digit pair code (entered in the planner UI, not here).
+homeassistant_api: true
+
+# Ingress surfaces the bridge's existing /pair page inside HA's sidebar
+# so users see the pair code without exposing port 9123 to their LAN.
+ingress: true
+ingress_port: 9123
+panel_icon: mdi:home-assistant
+panel_title: GenesisPlanner Bridge
+
+# Persist the bridge's tiny token cache + pair state. Survives restarts.
+map:
+  - addon_config:rw
+
+# Optional: power users with an external HA (not the one running this
+# add-on) or a custom HA URL can still override. Leave empty to use
+# the local supervisor proxy.
+options:
+  ha_url: ""
+  ha_token: ""
+schema:
+  ha_url: "url?"
+  ha_token: "password?"
